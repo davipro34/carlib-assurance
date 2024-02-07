@@ -39,7 +39,8 @@ public class Product {
     List<Comment> comments = new ArrayList<>();
 
     @ManyToMany(
-			mappedBy = "produits"
+			mappedBy = "products",
+            cascade = CascadeType.ALL
 			)
 	private List<Category> categories = new ArrayList<>();
     
@@ -91,4 +92,14 @@ public class Product {
         this.categories = categories;
     }
     
+    public void addComment(Comment comment) {
+		comments.add(comment);
+		comment.setProduct(this);
+	}
+ 
+	public void removeComment(Comment comment) {
+		comments.remove(comment);
+		comment.setProduct(null);
+	}
+
 }
