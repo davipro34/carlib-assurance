@@ -29,37 +29,35 @@ public class DataLayerApplication implements CommandLineRunner {
 		SpringApplication.run(DataLayerApplication.class, args);
 	}
 
-	/**
-	 * Runs the application.
-	 *
-	 * @param args The command line arguments.
-	 * @throws Exception If an error occurs while running the application.
-	 */
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
-		
+	
 		categoryService.getCategories().forEach(
 			category -> System.out.println(category.getName()));
-
+		
 		Category newCategory = new Category();
 		newCategory.setName("Promotion");
+		
 		newCategory = categoryService.addCategory(newCategory);
-
+		
 		categoryService.getCategories().forEach(
 			category -> System.out.println(category.getName()));
-
-
-		productService.getProducts().forEach(
-			product -> System.out.println(product.getName()));
 		
 		Product newProduct = new Product();
-		newProduct.setName("AssuranceHabitationSimple");;
+		newProduct.setName("AssuranceAuTiersFidelite");
+		newProduct.setDescription("Les garanties de l'assurance au tiers à un prix moindre grâce à votre fidélité!");
+		newProduct.setCost(1100);
+		
+		newCategory.addProduct(newProduct);
+		
 		newProduct = productService.addProduct(newProduct);
 		
 		productService.getProducts().forEach(
 			product -> System.out.println(product.getName()));
 
+		newProduct.getCategories().forEach(
+			category -> System.out.println(category.getName()));
 
 	}
 
