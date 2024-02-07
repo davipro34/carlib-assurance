@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.davipro.datalayer.model.Product;
 import fr.davipro.datalayer.service.ProductService;
 
 @SpringBootApplication
@@ -19,7 +20,8 @@ public class DataLayerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		Iterable<Product> products = productService.getProducts();
+		products.forEach(product -> System.out.println(product.getName()));
 	}
 
 }

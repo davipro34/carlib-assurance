@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DataLayerApplication<dataLayer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "fr.davipro.datalayer.DataLayerApplication",
+            "projectName": "dataLayer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
