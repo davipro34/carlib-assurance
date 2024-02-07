@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -42,19 +41,9 @@ public class Product {
     List<Comment> comments = new ArrayList<>();
 
     @ManyToMany(
-        fetch = FetchType.LAZY,
-        cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-        }
-    )
-    @JoinTable(
-        name = "categorie_produit",
-        joinColumns = @JoinColumn(name = "produit_id"),
-        inverseJoinColumns = @JoinColumn(name = "categorie_id")
-    )
-    private List<Category> categories = new ArrayList<>();
-
+			mappedBy = "products"
+			)
+	private List<Category> categories = new ArrayList<>();
     
     public int getProductId() {
         return productId;
