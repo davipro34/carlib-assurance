@@ -34,8 +34,9 @@ public class DataLayerApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 	
 		Iterable<Product> searchResults = productService.getProductsByName("AssuranceTousRisques");
-		searchResults.forEach(
-			product -> System.out.println(product.getProductId())
-		);
+		searchResults.forEach(product -> System.out.println(product.getProductId()));
+
+		searchResults = productService.getProductsByCategoryName("Standard");
+		searchResults.forEach(product -> System.out.println(product.getName()));
 	}
 }
