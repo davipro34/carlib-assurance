@@ -44,6 +44,9 @@ public class DataLayerApplication implements CommandLineRunner {
 		
 		searchCategory = categoryService.getCategoriesByProductName("AssuranceTousRisques");
 		searchCategory.forEach(category -> System.out.println(category.getName()));
-		
+
+		searchResults = productService.getProductsByCostLessThan(1000);
+		searchResults.forEach(product -> System.out.println(product.getName()));
+
 	}
 }
