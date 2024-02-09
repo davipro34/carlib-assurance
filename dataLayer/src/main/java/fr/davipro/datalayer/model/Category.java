@@ -3,6 +3,8 @@ package fr.davipro.datalayer.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +18,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
+@DynamicUpdate
 @Table(name = "categorie")
 public class Category {
 
@@ -28,11 +31,11 @@ public class Category {
     private String name;
     
     @ManyToMany(
-    fetch = FetchType.LAZY,
-    cascade = {
-        CascadeType.PERSIST,
-        CascadeType.MERGE
-    }
+        fetch = FetchType.LAZY,
+        cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+                }
     )
     @JoinTable(
         name = "categorie_produit",

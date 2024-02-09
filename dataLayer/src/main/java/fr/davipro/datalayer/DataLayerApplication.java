@@ -35,10 +35,10 @@ public class DataLayerApplication implements CommandLineRunner {
 	
 		Product existingProduct = productService.getProductById(1).get();
 		System.out.println(existingProduct.getCost());
-		
-		existingProduct.setCost(2000);
+
+		existingProduct.setCost(3000);
 		productService.saveProduct(existingProduct);
-		
+
 		existingProduct = productService.getProductById(1).get();
 		System.out.println(existingProduct.getCost());
 	}
