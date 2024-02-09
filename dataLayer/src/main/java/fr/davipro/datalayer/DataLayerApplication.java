@@ -33,37 +33,14 @@ public class DataLayerApplication implements CommandLineRunner {
 	@Transactional
 	public void run(String... args) throws Exception {
 	
-		categoryService.getCategories().forEach(
-			category -> System.out.println(category.getName()));
+		Product existingProduct = productService.getProductById(1).get();
+		System.out.println(existingProduct.getCost());
 		
-		Category newCategory = new Category();
-		newCategory.setName("Promotion");
+		existingProduct.setCost(3000);
+		productService.addProduct(existingProduct);
 		
-		newCategory = categoryService.addCategory(newCategory);
-		
-		categoryService.getCategories().forEach(
-			category -> System.out.println(category.getName()));
-		
-		Product newProduct = new Product();
-		newProduct.setName("AssuranceAuTiersFidelite");
-		newProduct.setDescription("Les garanties de l'assurance au tiers à un prix moindre grâce à votre fidélité!");
-		newProduct.setCost(1100);
-		
-		newCategory.addProduct(newProduct);
-		
-		newProduct = productService.addProduct(newProduct);
-		
-		productService.getProducts().forEach(
-			product -> System.out.println(product.getName()));
-
-		newProduct.getCategories().forEach(
-			category -> System.out.println(category.getName()));
-
-		Comment newComment = new Comment();
-		newComment.setContent("Assurance extraordinaire !");
-		newProduct.addComment(newComment);
-
-		commentService.addComment(newComment);
+		existingProduct = productService.getProductById(1).get();
+		System.out.println(existingProduct.getCost());
 	}
 
 }
