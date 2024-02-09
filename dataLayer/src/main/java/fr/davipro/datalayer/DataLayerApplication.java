@@ -59,6 +59,11 @@ public class DataLayerApplication implements CommandLineRunner {
 		newProduct.getCategories().forEach(
 			category -> System.out.println(category.getName()));
 
+		Comment newComment = new Comment();
+		newComment.setContent("Assurance extraordinaire !");
+		newProduct.addComment(newComment);
+
+		commentService.addComment(newComment);
 	}
 
 }
