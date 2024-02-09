@@ -8,4 +8,6 @@ import fr.davipro.datalayer.model.Comment;
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
 
+    public Iterable<Comment> findByContentContaining(String expression);
+    
 }

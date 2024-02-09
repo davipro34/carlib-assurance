@@ -48,5 +48,8 @@ public class DataLayerApplication implements CommandLineRunner {
 		searchResults = productService.getProductsByCostLessThan(1000);
 		searchResults.forEach(product -> System.out.println(product.getName()));
 
+		Iterable<Comment> searchComments = commentService.getCommentContaining("deçu");
+		searchComments.forEach(comment -> System.out.println(comment.getContent()));
+
 	}
 }
