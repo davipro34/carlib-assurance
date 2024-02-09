@@ -34,12 +34,12 @@ public class Comment {
     @JoinColumn(name="produit_id")
     private Product product;
 
-    public int getCommentaryId() {
+    public int getCommentId() {
         return commentaryId;
     }
 
-    public void setCommentaryId(int commentaryId) {
-        this.commentaryId = commentaryId;
+    public void setCommentaryId(int commentId) {
+        this.commentaryId = commentId;
     }
 
     public String getContent() {
